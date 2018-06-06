@@ -18,7 +18,11 @@ bot.command [:airdrop, :エアドロップ, :エアドロ, :ad] do |event, addr|
     j = j.to_f
     j = j * 0.00000001
     event.message.react "\u2705"
-    event.send_message "#{event.user.mention} **Xp-QtウォレットかCCWalletのアドレスなら**\nたぶん `#{j} XPC` 受け取れるよ。\n楽しみに待っててね。\n取引所やPoSプールのアドレスだと受け取れないよ。ごめんね。"
+    if j <= 0
+      event.send_message "#{event.user.mention} 残念だけどスナップショット時に残高がないので受け取れません。:sob:"
+    else
+      event.send_message "#{event.user.mention} **Xp-QtウォレットかCCWalletのアドレスなら**\nたぶん `#{j} XPC` 受け取れるよ。\n楽しみに待っててね。\n取引所やPoSプールのアドレスだと受け取れないよ。ごめんね。"
+    end
   rescue
     event.message.react "\u274c"
     event.send_message "#{event.user.mention} アドレスを正しく指定してね"
