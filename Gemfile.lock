@@ -1,6 +1,19 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activemodel (5.2.0)
+      activesupport (= 5.2.0)
+    activerecord (5.2.0)
+      activemodel (= 5.2.0)
+      activesupport (= 5.2.0)
+      arel (>= 9.0)
+    activesupport (5.2.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+    arel (9.0.0)
+    concurrent-ruby (1.0.5)
     connection_pool (2.2.2)
     discordrb (3.2.1)
       discordrb-webhooks (~> 3.2.0.1)
@@ -17,6 +30,8 @@ GEM
     ffi (1.9.25)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    i18n (1.0.1)
+      concurrent-ruby (~> 1.0)
     json (2.1.0)
     mechanize (2.7.6)
       domain_name (~> 0.5, >= 0.5.1)
@@ -31,6 +46,8 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.3.0)
+    minitest (5.11.3)
+    mysql2 (0.5.1)
     net-http-digest_auth (1.4.1)
     net-http-persistent (3.0.0)
       connection_pool (~> 2.2)
@@ -46,6 +63,9 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    thread_safe (0.3.6)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
@@ -59,10 +79,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord
   discordrb
   dotenv
   json
   mechanize
+  mysql2
 
 BUNDLED WITH
    1.16.1
