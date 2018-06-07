@@ -33,15 +33,17 @@ bot.command [:airdrop, :エアドロップ, :エアドロ, :ad] do |event, addr|
       j = airdrop.amount
     end
 
+    unless is_exists
+      airdrop = Airdrop.create(address: addr, amount: j)
+    end
+
     event.message.react "\u2705"
     if j <= 0
       event.send_message "#{event.user.mention} 残念だけどスナップショット時に残高がないので受け取れません。:sob:"
     else
       event.send_message "#{event.user.mention} **Xp-QtウォレットかCCWalletのアドレスなら**\nたぶん `#{j} XPC` 受け取れるよ。\n楽しみに待っててね。\n取引所やPoSプールのアドレスだと受け取れないよ。ごめんね。"
     end
-    unless is_exists
-      airdrop = Airdrop.create(address: addr, amount: j)
-    end
+
   rescue => e
     puts e
     event.message.react "\u274c"
